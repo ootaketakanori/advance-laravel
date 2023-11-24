@@ -15,7 +15,6 @@ class CreatePeopleTable extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->id();
-            $table->string('nationality', 100);
             $table->string('name');
             $table->integer('age');
             $table->timestamp('created_at')->useCurrent()->nullable();

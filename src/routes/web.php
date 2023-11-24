@@ -13,6 +13,13 @@ use App\Models\Person;
 |
 */
 
+
+
 Route::get('/softdelete', function () {
-    person::find(1)->delete();
+    Person::find(1)->delete();
+});
+
+Route::get('softdelete/absolute', function () {
+    $result = Person::onlyTrashed()->forceDelete();
+    echo $result;
 });
