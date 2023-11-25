@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Person;
+use App\Models\Product;
+use App\Http\Controller\PenController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,13 +14,14 @@ use App\Models\Person;
 |
 */
 
+Route::get('fill', [PenController::class, 'fillPen']);
+Route::get('create', [PenController::class, 'createPen']);
+Route::get('insert', [PenController::class, 'insertPen']);
 
 
-Route::get('/softdelete', function () {
-    Person::find(1)->delete();
-});
-
-Route::get('softdelete/absolute', function () {
-    $result = Person::onlyTrashed()->forceDelete();
-    echo $result;
+Route::get('uuid', function () {
+    $products = Product::all();
+    foreach ($products as $product) {
+        echo $product . '<br>';
+    }
 });
